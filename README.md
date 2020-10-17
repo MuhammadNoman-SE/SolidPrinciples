@@ -1,0 +1,2 @@
+# SolidPrinciples
+ .NET SolidPrinciples
