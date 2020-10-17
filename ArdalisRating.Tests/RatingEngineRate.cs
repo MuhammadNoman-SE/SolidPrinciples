@@ -7,7 +7,11 @@ namespace ArdalisRating.Tests
 {
     public class RatingEngineRate
     {
-[Fact]
+        public Logger _logger = new Logger();
+        public PolicyReader _policyReader = new PolicyReader();
+        public PolicyDeserializer _policyDeserializer = new PolicyDeserializer();
+
+        [Fact]
 public void ReturnsRatingOf10000For200000LandPolicy()
 {
     var policy = new Policy
@@ -43,6 +47,14 @@ public void ReturnsRatingOf10000For200000LandPolicy()
             var result = engine.Rating;
 
             Assert.Equal(0, result);
+        }
+        [Fact]
+        public void ReturnsRatingOfEmpty()
+        {
+            var policy = "{}";
+            var actual = _policyDeserializer.GetDeserializedPolicy(policy);
+            var expected = new Policy();
+            Assert.Equal(expected.FullName, actual.FullName);
         }
     }
 }

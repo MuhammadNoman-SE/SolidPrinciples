@@ -12,26 +12,29 @@ namespace ArdalisRating
     public class RatingEngine
     {
         public decimal Rating { get; set; }
+        public Logger _logger=new Logger();
+        public PolicyReader _policyReader = new PolicyReader();
+        public PolicyDeserializer _policyDeserializer = new PolicyDeserializer();
         public void Rate()
         {
-            Console.WriteLine("Starting rate.");
 
-            Console.WriteLine("Loading policy.");
+            _logger.Logg("Starting rate.");
+
+            _logger.Logg("Loading policy.");
 
             // load policy - open file policy.json
-            string policyJson = File.ReadAllText("policy.json");
+            string policyJson = _policyReader.GetPolicy();
 
-            var policy = JsonConvert.DeserializeObject<Policy>(policyJson,
-                new StringEnumConverter());
+            var policy = _policyDeserializer.GetDeserializedPolicy(policyJson);
 
             switch (policy.Type)
             {
                 case PolicyType.Auto:
-                    Console.WriteLine("Rating AUTO policy...");
-                    Console.WriteLine("Validating policy.");
+                    _logger.Logg("Rating AUTO policy...");
+                    _logger.Logg("Validating policy.");
                     if (String.IsNullOrEmpty(policy.Make))
                     {
-                        Console.WriteLine("Auto policy must specify Make");
+                        _logger.Logg("Auto policy must specify Make");
                         return;
                     }
                     if (policy.Make == "BMW")
@@ -45,37 +48,37 @@ namespace ArdalisRating
                     break;
 
                 case PolicyType.Land:
-                    Console.WriteLine("Rating LAND policy...");
-                    Console.WriteLine("Validating policy.");
+                    _logger.Logg("Rating LAND policy...");
+                    _logger.Logg("Validating policy.");
                     if (policy.BondAmount == 0 || policy.Valuation == 0)
                     {
-                        Console.WriteLine("Land policy must specify Bond Amount and Valuation.");
+                        _logger.Logg("Land policy must specify Bond Amount and Valuation.");
                         return;
                     }
                     if (policy.BondAmount < 0.8m * policy.Valuation)
                     {
-                        Console.WriteLine("Insufficient bond amount.");
+                        _logger.Logg("Insufficient bond amount.");
                         return;
                     }
                     Rating = policy.BondAmount * 0.05m;
                     break;
 
                 case PolicyType.Life:
-                    Console.WriteLine("Rating LIFE policy...");
-                    Console.WriteLine("Validating policy.");
+                    _logger.Logg("Rating LIFE policy...");
+                    _logger.Logg("Validating policy.");
                     if (policy.DateOfBirth == DateTime.MinValue)
                     {
-                        Console.WriteLine("Life policy must include Date of Birth.");
+                        _logger.Logg("Life policy must include Date of Birth.");
                         return;
                     }
                     if (policy.DateOfBirth < DateTime.Today.AddYears(-100))
                     {
-                        Console.WriteLine("Centenarians are not eligible for coverage.");
+                        _logger.Logg("Centenarians are not eligible for coverage.");
                         return;
                     }
                     if (policy.Amount == 0)
                     {
-                        Console.WriteLine("Life policy must include an Amount.");
+                        _logger.Logg("Life policy must include an Amount.");
                         return;
                     }
                     int age = DateTime.Today.Year - policy.DateOfBirth.Year;
@@ -95,11 +98,11 @@ namespace ArdalisRating
                     break;
 
                 default:
-                    Console.WriteLine("Unknown policy type");
+                    _logger.Logg("Unknown policy type");
                     break;
             }
 
-            Console.WriteLine("Rating completed.");
+            _logger.Logg("Rating completed.");
         }
     }
 }
