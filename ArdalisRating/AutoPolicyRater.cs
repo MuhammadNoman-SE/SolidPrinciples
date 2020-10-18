@@ -7,27 +7,27 @@ namespace ArdalisRating
     public class AutoPolicyRater : PolicyRater
     {
 
-        public AutoPolicyRater(IUpdateRatting updateRatting) : base(updateRatting)
+        public AutoPolicyRater(ILogger logger) : base(logger)
         {
         }
-        public override void Rate(Policy policy)
+        public override decimal Rate(Policy policy)
         {
-            LoggerInstance.Logg("Rating AUTO policy...");
-            LoggerInstance.Logg("Validating policy.");
+            _logger.Logg("Rating AUTO policy...");
+            _logger.Logg("Validating policy.");
             if (String.IsNullOrEmpty(policy.Make))
             {
-                LoggerInstance.Logg("Auto policy must specify Make");
-                return;
+                _logger.Logg("Auto policy must specify Make");
+                return 0m;
             }
             if (policy.Make == "BMW")
             {
                 if (policy.Deductible < 500)
                 {
-                    _updateRatting.UpdateRating(1000m);
+                    return 1000m;
                 }
-                _updateRatting.UpdateRating(900m);
+                return 900m;
             }
-
+            return 0m;
         }
     }
 }

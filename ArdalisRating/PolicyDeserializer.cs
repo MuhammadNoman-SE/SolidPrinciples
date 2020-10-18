@@ -6,7 +6,10 @@ using System.Text;
 
 namespace ArdalisRating
 {
-    public class PolicyDeserializer
+    public interface IPolicyDeserializer {
+        Policy GetDeserializedPolicy(string policyJson);
+    }
+    public class PolicyDeserializer:IPolicyDeserializer
     {
         public Policy GetDeserializedPolicy(string policyJson) {
             try

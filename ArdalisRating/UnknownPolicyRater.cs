@@ -6,13 +6,13 @@ namespace ArdalisRating
 {
     public class UnknownPolicyRater : PolicyRater
     {
-        public UnknownPolicyRater(IUpdateRatting updateRatting):base(updateRatting)
+        public UnknownPolicyRater(ILogger logger) : base(logger)
         {
         }
-        public override void Rate(Policy policy)
+        public override decimal Rate(Policy policy)
         {
-            LoggerInstance.Logg("Unknown Policy...");
-            
+            _logger.Logg("Unknown Policy...");
+            return 0m;
         }
     }
 }

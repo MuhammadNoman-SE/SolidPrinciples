@@ -11,4 +11,3 @@ D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\Ardalis
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.dll
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.pdb
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.genruntimeconfig.cache
-D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.csprojAssemblyReference.cache

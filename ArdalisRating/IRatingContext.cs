@@ -12,7 +12,7 @@ namespace ArdalisRating
     {
         string GetPolicy();
         Policy GetDeserializedPolicy(string policyJson);
-        PolicyRater GetFactory(IRatingContext ratingContext, Policy policy);
+        PolicyRater GetFactory( Policy policy);
         RatingEngine Engine { get; set; }
 
     }

@@ -5,7 +5,10 @@ using System.Text;
 
 namespace ArdalisRating
 {
-    public class PolicyReader
+    public interface IPolicyReader {
+        string GetPolicy();
+    }
+    public class PolicyReader:IPolicyReader
     {
         public string GetPolicy() {
             string policyJson = File.ReadAllText("policy.json");
