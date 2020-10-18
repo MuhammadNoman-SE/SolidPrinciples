@@ -9,9 +9,20 @@ namespace ArdalisRating
     public class PolicyDeserializer
     {
         public Policy GetDeserializedPolicy(string policyJson) {
-            var policy = JsonConvert.DeserializeObject<Policy>(policyJson,
-                    new StringEnumConverter());
-            return policy;
+            try
+            {
+
+                var policy = JsonConvert.DeserializeObject<Policy>(policyJson,
+                        new StringEnumConverter());
+                return policy;
+            }
+            catch (Exception)
+            {
+                return null;
+
+
+
+            }
         }
     }
 }

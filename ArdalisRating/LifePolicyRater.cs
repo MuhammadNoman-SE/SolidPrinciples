@@ -9,7 +9,8 @@ namespace ArdalisRating
 
         public Logger _logger;
         public RatingEngine _ratingEngine;
-        public LifePolicyRater(Logger logger, RatingEngine ratingEngine) {
+        public LifePolicyRater(Logger logger, RatingEngine ratingEngine) : base(logger, ratingEngine)
+        {
             _logger = logger;
             _ratingEngine = ratingEngine;
         }

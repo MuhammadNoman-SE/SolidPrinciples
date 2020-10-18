@@ -5,7 +5,6 @@ D:\SolidPrinciples\SolidPrinciples\ArdalisRating\bin\Debug\netcoreapp2.2\Ardalis
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\bin\Debug\netcoreapp2.2\ArdalisRating.runtimeconfig.dev.json
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\bin\Debug\netcoreapp2.2\ArdalisRating.dll
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\bin\Debug\netcoreapp2.2\ArdalisRating.pdb
-D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.csprojAssemblyReference.cache
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.AssemblyInfoInputs.cache
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.AssemblyInfo.cs
 D:\SolidPrinciples\SolidPrinciples\ArdalisRating\obj\Debug\netcoreapp2.2\ArdalisRating.csproj.CoreCompileInputs.cache
