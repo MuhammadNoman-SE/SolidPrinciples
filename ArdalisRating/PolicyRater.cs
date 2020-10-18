@@ -6,12 +6,11 @@ namespace ArdalisRating
 {
     public abstract class PolicyRater
     {
-        public Logger _logger;
-        public RatingEngine _ratingEngine;
-        public PolicyRater(Logger logger, RatingEngine ratingEngine)
+        public ILogger LoggerInstance=new Logger();
+        public IUpdateRatting _updateRatting;
+        public PolicyRater(IUpdateRatting updateRatting)
         {
-            _logger = logger;
-            _ratingEngine = ratingEngine;
+            _updateRatting=updateRatting;
         }
         public abstract void Rate(Policy policy);
     }

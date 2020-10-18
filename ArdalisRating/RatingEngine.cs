@@ -12,25 +12,22 @@ namespace ArdalisRating
     public class RatingEngine
     {
         public decimal Rating { get; set; }
-        public Logger _logger=new Logger();
-        public PolicyReader _policyReader = new PolicyReader();
-        public PolicyDeserializer _policyDeserializer = new PolicyDeserializer();
+        IRatingContext _ratingContext = new DefaultRatingContext();
         public void Rate()
         {
 
-            _logger.Logg("Starting rate.");
+            _ratingContext.Logg("Starting rate.");
 
-            _logger.Logg("Loading policy.");
+            _ratingContext.Logg("Loading policy.");
 
             // load policy - open file policy.json
-            string policyJson = _policyReader.GetPolicy();
+            string policyJson = _ratingContext.GetPolicy();
 
-            var policy = _policyDeserializer.GetDeserializedPolicy(policyJson);
-            RaterFactory raterFactory = new RaterFactory(_logger,this);
-            var raterPolicy = raterFactory.GetFactory(policy);
+            var policy = _ratingContext.GetDeserializedPolicy(policyJson);
+            var raterPolicy = _ratingContext.GetFactory(_ratingContext,policy);
             raterPolicy.Rate(policy);
 
-            _logger.Logg("Rating completed.");
+            _ratingContext.Logg("Rating completed.");
         }
     }
 }
